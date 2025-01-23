@@ -1,0 +1,8 @@
+.open-modal-btn {
+  padding: 0.4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-primary);
+  display: none;
+}
