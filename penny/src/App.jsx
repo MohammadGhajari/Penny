@@ -5,20 +5,19 @@ import Signup from "./pages/Signup";
 import Transaction from "./pages/Transaction";
 import Cluster from "./pages/Cluster";
 import PageNotFound from "./pages/PageNotFound";
-
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ToastContainer, toast } from "react-toastify";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
-import { GlobalStyles } from "@mui/material";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const theme = createTheme({
+    direction: "rtl", // Set the global direction to RTL
     typography: {
+      // fontFamily: `'IRANSans', 'Arial', sans-serif`, // Add Persian fonts here
       fontSize: 20,
-      fontFamily: "Rajdhani",
     },
     palette: {
       primary: {

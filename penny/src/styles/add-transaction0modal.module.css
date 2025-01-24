@@ -1,0 +1,27 @@
+.date-picker-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.modal-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 4rem 2rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-sm);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  background-color: white;
+}
+
+.details-container {
+  width: 100%;
+  margin-top: 1.6rem;
+  padding: 0.6rem;
+  border-radius: var(--border-radius-sm);
+}

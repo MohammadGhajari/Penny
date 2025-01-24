@@ -9,22 +9,16 @@ export default function AddTransaction() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleClose() {
-    console.log("closed");
     setIsModalOpen(false);
   }
   function handleOpen() {
-    console.log("opened");
     setIsModalOpen(true);
-  }
-  function onConfirm() {
-    console.log("confimrd");
-    setIsModalOpen("false");
   }
 
   return (
     <div>
       <Button
-        variant="outlined"
+        variant="contained"
         onClick={handleOpen}
         style={{
           display: "flex",
@@ -44,11 +38,9 @@ export default function AddTransaction() {
         </span>
         <span>New Transaction</span>
       </Button>
-      <AddTransactionModal
-        open={isModalOpen}
-        onClose={handleClose}
-        onConfirm={onConfirm}
-      />
+      {isModalOpen && (
+        <AddTransactionModal open={isModalOpen} onClose={handleClose} />
+      )}
     </div>
   );
 }

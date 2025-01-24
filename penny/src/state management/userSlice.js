@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   userName: "",
   password: "",
-  transactions: [], //{ customerName: "", date: '', for: '', details: '', paid: false, cluster: 'a unique cluster', receipt: 'an image of receipt }
+  transactions: [], //{ id: is a date, customerName: "", date: '', for: '', details: '', paid: false, cluster: 'a unique cluster', receipt: 'an image of receipt }
 };
 const userSlice = createSlice({
   name: "user",
