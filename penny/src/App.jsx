@@ -16,7 +16,7 @@ function App() {
   const theme = createTheme({
     direction: "rtl", // Set the global direction to RTL
     typography: {
-      // fontFamily: `'IRANSans', 'Arial', sans-serif`, // Add Persian fonts here
+      fontFamily: `Vazir`, // Add Persian fonts here
       fontSize: 20,
     },
     palette: {

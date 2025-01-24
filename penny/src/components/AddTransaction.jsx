@@ -39,7 +39,11 @@ export default function AddTransaction() {
         <span>New Transaction</span>
       </Button>
       {isModalOpen && (
-        <AddTransactionModal open={isModalOpen} onClose={handleClose} />
+        <AddTransactionModal
+          open={isModalOpen}
+          onClose={handleClose}
+          setOpen={setIsModalOpen}
+        />
       )}
     </div>
   );

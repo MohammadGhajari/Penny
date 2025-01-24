@@ -142,7 +142,6 @@ export default function DataTable({ data }) {
         setSelectedTransactionToDelete: setSelectedTransactionToDelete,
       },
     },
-    { field: "receipt", cellRenderer: CustomReceipt },
   ]);
 
   const defaultColDef = useMemo(() => {

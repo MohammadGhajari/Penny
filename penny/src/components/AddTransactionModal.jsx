@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   TextField,
   Checkbox,
@@ -10,6 +10,7 @@ import {
   Modal,
 } from "@mui/material";
 import styles from "./../styles/add-transaction0modal.module.css";
+import "./../styles/add-transaction0modal.module.css";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import DatePicker, { DateObject } from "react-multi-date-picker";
@@ -24,8 +25,9 @@ import { toastError } from "../utils/notify";
 import { useSelector } from "react-redux";
 import { setTransactions } from "../state management/userSlice";
 import { useDispatch } from "react-redux";
+import { useMediaQuery } from "@mui/material";
 
-export default function AddTransactionModal({ open, onClose }) {
+export default function AddTransactionModal({ open, onClose, setOpen }) {
   const dispatch = useDispatch();
   const { userName } = useSelector((state) => state.user);
 
@@ -82,7 +84,7 @@ export default function AddTransactionModal({ open, onClose }) {
       };
 
       const allUsers = getFromLocalStorage("allUsers");
-      console.log(allUsers);
+
       for (let i = 0; i < allUsers.length; i++) {
         if (allUsers[i].userName === userName) {
           allUsers[i].transactions.push(newTransaction);
@@ -93,7 +95,6 @@ export default function AddTransactionModal({ open, onClose }) {
           break;
         }
       }
-      console.log(allUsers);
 
       setFormData({
         customerName: "",
@@ -104,6 +105,20 @@ export default function AddTransactionModal({ open, onClose }) {
       setErrors({});
     }
   };
+  console.log(window.innerWidth);
+  const isMobile = useMediaQuery("(max-width:500px)");
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <Modal open={open} onClose={onClose}>
@@ -113,11 +128,15 @@ export default function AddTransactionModal({ open, onClose }) {
         </Typography>
         <form onSubmit={handleSubmit}>
           <div className={styles["date-picker-container"]}>
-            <Typography>Date: </Typography>
+            {!isMobile && <Typography>Date: </Typography>}
             <DatePicker
               render={
                 <Button
-                  style={{ width: "40rem" }}
+                  style={{
+                    width: `${window.innerWidth > 500 ? "45rem" : windowWidth - 40 + "px"}`,
+                    alignSelf: "center",
+                    justifySelf: "center",
+                  }}
                   variant="outlined"
                   size="large"
                   fullWidth
@@ -192,6 +211,15 @@ export default function AddTransactionModal({ open, onClose }) {
             sx={{ marginTop: 2, padding: 1 }}
           >
             Add Transaction
+          </Button>
+          <Button
+            type="button"
+            variant="contained"
+            fullWidth
+            sx={{ marginTop: 2, padding: 1 }}
+            onClick={() => setOpen(false)}
+          >
+            cancel
           </Button>
         </form>
       </Box>
