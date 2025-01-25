@@ -11,7 +11,6 @@ import {
   iconSetMaterial,
 } from "ag-grid-community";
 import { useDispatch, useSelector } from "react-redux";
-import { themeAlpine } from "ag-grid-community";
 import "./../styles/data-table.module.css";
 import ConfirmationDialog from "./ConfirmationDialog";
 import { getFromLocalStorage, saveInLocalStorage } from "./../utils/helper";
@@ -19,6 +18,7 @@ import { toastSuccess } from "./../utils/notify";
 import { setTransactions } from "./../state management/userSlice";
 import { MdDeleteForever } from "react-icons/md";
 import { Button, Modal } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 
 const myTheme = themeQuartz.withPart(colorSchemeDark);
 
@@ -46,7 +46,7 @@ const CustomButtonComponent = ({
     <div className={styles["paid-btn-container"]}>
       <button
         className={styles["paid-btn"]}
-        style={{ backgroundColor: `${!paid ? "red" : "var(--color-primary"}` }}
+        style={{ backgroundColor: `${!paid ? "red" : "#42d392"}` }}
         onClick={handleClick}
       >
         <span> {!paid ? <IoMdCloseCircleOutline /> : <GiConfirmed />}</span>
@@ -102,6 +102,8 @@ export default function DataTable({ data }) {
   // const { isDarkMode } = useSelector((state) => state.darkMode);
   const { userName } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+
+  const isMobile = useMediaQuery("(max-width:450px)");
 
   const [paidModalIsOpen, setPaidModalIsOpen] = useState(false);
   const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
@@ -200,9 +202,9 @@ export default function DataTable({ data }) {
         columnDefs={columnDefs}
         defaultColDef={defaultColDef}
         rowSelection={rowSelection}
-        pagination={true}
-        paginationPageSize={10}
-        paginationPageSizeSelector={[10, 25, 50]}
+        pagination={isMobile ? false : true}
+        paginationPageSize={isMobile ? 5000 : 10}
+        paginationPageSizeSelector={[10, 25, 50, 5000]}
       />
       <Modal
         open={detailsModalIsOpen}

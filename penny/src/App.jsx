@@ -14,18 +14,17 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const theme = createTheme({
-    direction: "rtl", // Set the global direction to RTL
     typography: {
-      fontFamily: `Vazir`, // Add Persian fonts here
+      fontFamily: `Vazir`,
       fontSize: 20,
     },
     palette: {
       primary: {
-        main: "#42d392",
-        tint1: "#88d6b3",
-        tint2: "#a5cbba",
-        shade1: "#02d878",
-        shade2: "#039c57",
+        main: "#ffd700",
+        tint1: "rgb(249, 222, 70)",
+        tint2: "rgb(255, 237, 136)",
+        shade1: "rgb(206, 176, 7)",
+        shade2: "rgb(181, 155, 4)",
       },
       secondary: {
         main: "#589cd9",

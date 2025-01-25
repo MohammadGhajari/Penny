@@ -133,7 +133,7 @@ export default function AddTransactionModal({ open, onClose, setOpen }) {
               render={
                 <Button
                   style={{
-                    width: `${window.innerWidth > 500 ? "45rem" : windowWidth - 40 + "px"}`,
+                    width: `${window.innerWidth > 500 ? "40rem" : windowWidth - 40 + "px"}`,
                     alignSelf: "center",
                     justifySelf: "center",
                   }}

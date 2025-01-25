@@ -1,3 +1,4 @@
+@import url("./base.module.css");
 .container {
   box-shadow: var(--shadow-lg);
   padding: 2rem;
